@@ -5,7 +5,9 @@ import { Drawer, LinearProgress, Grid, Badge } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import { Wrapper, StyledButton } from "./App.styles";
+
 import { Item } from "./components/Item";
+import { Cart } from "./components/Cart";
 
 export type CartItemType = {
   id: number;
@@ -43,7 +45,11 @@ export function App() {
   return (
     <Wrapper>
       <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
-        Cart goes here
+        <Cart 
+          cartItems={cartItems} 
+          addToCart={handleAddToCart}
+          removeFromCart={handleRemoveFromCart}
+        />
       </Drawer>
 
       <StyledButton onClick={() => setCartOpen(true)}>
